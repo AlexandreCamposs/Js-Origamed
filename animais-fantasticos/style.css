@@ -17,6 +17,10 @@ img {
 ul {
   list-style: none;
 }
+
+html.textomaior {
+  font-size: 120%;
+}
 body {
   background-color: #faf6ed;
   color: #222;
@@ -37,7 +41,7 @@ body {
 }
 .menu li a {
   display: block;
-  padding: 10px;
+  padding: 16px 11px;
   margin-right: 10px;
   color: #222;
   text-decoration: none;

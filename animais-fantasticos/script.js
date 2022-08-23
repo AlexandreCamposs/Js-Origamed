@@ -23,7 +23,7 @@ initTab();
 
 function initAccordion() {
   const accordion = document.querySelectorAll(".js-accordion dt");
-  const activeClass = 'ativo'
+  const activeClass = "ativo";
 
   if (accordion.length) {
     accordion[0].classList.add(activeClass);
@@ -38,7 +38,56 @@ function initAccordion() {
       item.addEventListener("click", activeAccordion);
     });
   }
-
-
 }
 initAccordion();
+
+function initScrollSuave() {
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
+
+  function scrollToSection(event) {
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute("href");
+    const section = document.querySelector(href);
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    //Forma alternativa
+    // const topo = section.offsetTop;
+    // window.scrollTo({
+    //   top:topo,
+    //   behavior:'smooth'
+    // });
+  }
+
+  linksInternos.forEach((links) => {
+    links.addEventListener("click", scrollToSection);
+  });
+}
+initScrollSuave();
+
+function animationInit() {
+
+const sections = document.querySelectorAll(".js-scroll");
+if (sections.length) {
+  const windowMetade = window.innerHeight * 0.6;
+
+  function animaScroll() {
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionVisible = sectionTop - windowMetade < 0;
+      if (sectionVisible) {
+        section.classList.add("ativo");
+      } else {
+        section.classList.remove("ativo");
+      }
+    });
+  }
+  animaScroll();
+
+  window.addEventListener("scroll", animaScroll);
+}
+}
+animationInit();

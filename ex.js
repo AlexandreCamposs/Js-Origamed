@@ -189,45 +189,81 @@
 
 //Exercícios constructor
 // Transforme o objeto abaixo em uma Constructor Function
-const pessoa = {
-  nome: "Nome pessoa",
-  idade: 0,
-  andar() {
-    console.log(this.nome + " andou");
-  },
-};
+// const pessoa = {
+//   nome: "Nome pessoa",
+//   idade: 0,
+//   andar() {
+//     console.log(this.nome + " andou");
+//   },
+// };
 
-function Pessoa(nome, idade) {
-  this.nome = nome;
-  this.idade = idade;
-  this.andar = function () {
-    console.log(nome, "Andou");
-  };
-}
+// function Pessoa(nome, idade) {
+//   this.nome = nome;
+//   this.idade = idade;
+//   this.andar = function () {
+//     console.log(nome, "Andou");
+//   };
+// }
 // Crie 3 pessoas, João - 20 anos,
 // Maria - 25 anos, Bruno - 15 anos
-const joao = new Pessoa("Joao", 20);
-const maria = new Pessoa("Maria", 15);
-// Crie uma Constructor Function (Dom) para manipulação 
-// de listas de elementos do dom. Deve conter as seguintes 
-// propriedades e métodos: 
-// 
-// elements, retorna NodeList com os elementos selecionados 
-// addClass(classe), adiciona a classe a todos os elementos 
+// const joao = new Pessoa("Joao", 20);
+// const maria = new Pessoa("Maria", 15);
+// const bruno = new Pessoa("Bruno",29);
+// Crie uma Constructor Function (Dom) para manipulação
+// de listas de elementos do dom. Deve conter as seguintes
+// propriedades e métodos:
+//
+// elements, retorna NodeList com os elementos selecionados
+// addClass(classe), adiciona a classe a todos os elementos
 // removeClass(classe), remove a classe a todos os elementos
-function Dom(seletor) {
-  const elementList = document.querySelectorAll(seletor);
-  console.log(elementList)
-  this.elements = elementList
-  this.addClass = function(classe){
-    elementList.forEach((element) =>{
-      element.classList.add(classe);
-    })
-  }
-  this.removeClass = function(classe) {
-    elementList.forEach((element) =>{
-      element.classList.remove(classe)
-    })
-  }
+// function Dom(seletor) {
+//   const elementList = document.querySelectorAll(seletor);
+//   console.log(elementList)
+//   this.elements = elementList
+//   this.addClass = function(classe){
+//     elementList.forEach((element) =>{
+//       element.classList.add(classe);
+//     })
+//   }
+//   this.removeClass = function(classe) {
+//     elementList.forEach((element) =>{
+//       element.classList.remove(classe)
+//     })
+//   }
+// }
+// const listaItens = new Dom('li')
+// const ul = new Dom('ul')
+
+// Exercícios Prototype;
+// Crie uma função construtora de Pessoas
+// Deve conter nome, sobrenome e idade
+// Crie um método no protótipo que retorne
+// o nome completo da pessoa
+
+function Pessoa(nome, sobrenome, idade ){
+  this.nome = nome;
+  this.sobrenome = sobrenome;
+  this.idade = idade;
 }
-const listaItens = new Dom('li')
+
+const ale = new Pessoa('Alexandre', 'Campos', 29);
+// Liste os métodos acessados por
+// dados criados com NodeList,
+// HTMLCollection, Document
+Object.getOwnPropertyNames(NodeList.prototype)
+Object.getOwnPropertyNames(HTMLCollection.prototype)
+Object.getOwnPropertyNames(Document.prototype)
+
+// Liste os construtores dos dados abaixo
+const li = document.querySelector('li');
+// li.click.constructor mostra oque o item é
+
+li;//HTMLLIElement
+li.click;//Function
+li.innerText;//String
+li.value;//Number
+li.hidden;//Boolean
+li.offsetLeft;//Number
+li.click();//Não existe 
+// Qual o construtor do dado abaixo:
+li.hidden.constructor.name  //Retorna String
